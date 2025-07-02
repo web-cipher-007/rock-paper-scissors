@@ -12,11 +12,6 @@ function hasPlayerWonTheRound(player, computer) {
     (player === "Paper" && computer === "Rock")
   );
 }
-function disableOptions(disabled) {
-  rockBtn.disabled = disabled;
-  paperBtn.disabled = disabled;
-  scissorsBtn.disabled = disabled;
-}
 
 let playerScore = 0;
 let computerScore = 0;
@@ -98,3 +93,8 @@ paperBtn.addEventListener("click", function () {
 scissorsBtn.addEventListener("click", function () {
   showResults("Scissors");
 });
+function disableOptions(disabled) {
+  rockBtn.disabled = disabled;
+  paperBtn.disabled = disabled;
+  scissorsBtn.disabled = disabled;
+}
