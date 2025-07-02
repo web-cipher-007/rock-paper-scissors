@@ -48,6 +48,7 @@ function showResults(userOption) {
   const computerResult = getRandomComputerResult();
 
   disableOptions(true); // Disable buttons while waiting
+  optionsContainer.style.display = "none"; // hide options during delay
 
   setTimeout(() => {
     const resultMessage = getRoundResults(userOption, computerResult);
@@ -67,6 +68,7 @@ function showResults(userOption) {
       optionsContainer.style.display = "none";
     } else {
       disableOptions(false); // Re-enable options for next round
+      optionsContainer.style.display = "flex"; // show options again
     }
   }, 800); // Delay before showing the result
 }
