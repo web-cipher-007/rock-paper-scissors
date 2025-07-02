@@ -16,9 +16,7 @@ function hasPlayerWonTheRound(player, computer) {
 let playerScore = 0;
 let computerScore = 0;
 
-function getRoundResults(userOption) {
-  const computerResult = getRandomComputerResult();
-
+function getRoundResults(userOption, computerResult) {
   if (hasPlayerWonTheRound(userOption, computerResult)) {
     playerScore++;
     return `Player wins! ${userOption} beats ${computerResult}`;
@@ -38,19 +36,31 @@ const optionsContainer = document.querySelector(".options-container");
 const resetGameBtn = document.getElementById("reset-game-btn");
 
 function showResults(userOption) {
-  roundResultsMsg.innerText = getRoundResults(userOption);
-  computerScoreSpanElement.innerText = computerScore;
-  playerScoreSpanElement.innerText = playerScore;
+  const computerResult = getRandomComputerResult();
 
-  if (playerScore === 3 || computerScore === 3) {
-    winnerMsgElement.innerText = `${
-      playerScore === 3 ? "Player" : "Computer"
-    } has won the game!`;
+  disableOptions(true); //disables buttons while waiting
 
-    resetGameBtn.style.display = "block";
-    optionsContainer.style.display = "none";
-  }
-};
+  roundResultsMsg.textContent = `Computer chose ${computerResult}`; //shows computer's choice
+  
+ setTimeout(() => {
+    const resultMessage = getRoundResults(userOption, computerResult);
+
+    roundResultsMsg.textContent = resultMessage;
+    playerScoreSpanElement.textContent = playerScore;
+    computerScoreSpanElement.textContent = computerScore;
+
+    if (playerScore === 3 || computerScore === 3) {
+      winnerMsgElement.textContent = `${
+        playerScore === 3 ? "Player" : "Computer"
+      } has won the game!`;
+
+      resetGameBtn.style.display = "block";
+      optionsContainer.style.display = "none";
+    } else {
+      disableOptions(false); //re-enables the options back
+    }
+  }, 800); // waits 800ms before showing winner
+}
 
 function resetGame() {
   playerScore = 0;
