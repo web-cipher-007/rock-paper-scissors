@@ -38,14 +38,14 @@ const resetGameBtn = document.getElementById("reset-game-btn");
 function showResults(userOption) {
   const computerResult = getRandomComputerResult();
 
-  disableOptions(true); //disables buttons while waiting
+  disableOptions(true); // Disable buttons while waiting
 
-  roundResultsMsg.textContent = `Computer chose ${computerResult}`; //shows computer's choice
-  
- setTimeout(() => {
+  setTimeout(() => {
     const resultMessage = getRoundResults(userOption, computerResult);
 
-    roundResultsMsg.textContent = resultMessage;
+    // Combine both messages in one line so computer choice is retained
+    roundResultsMsg.textContent = `Computer chose ${computerResult}. ${resultMessage}`;
+
     playerScoreSpanElement.textContent = playerScore;
     computerScoreSpanElement.textContent = computerScore;
 
@@ -57,9 +57,9 @@ function showResults(userOption) {
       resetGameBtn.style.display = "block";
       optionsContainer.style.display = "none";
     } else {
-      disableOptions(false); //re-enables the options back
+      disableOptions(false); // Re-enable options for next round
     }
-  }, 800); // waits 800ms before showing winner
+  }, 800); // Delay before showing the result
 }
 
 function resetGame() {
