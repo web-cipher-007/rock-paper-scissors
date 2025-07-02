@@ -16,6 +16,12 @@ const rockBtn = document.getElementById("rock-btn");
 const paperBtn = document.getElementById("paper-btn");
 const scissorsBtn = document.getElementById("scissors-btn");
 
+function disableOptions(disabled) {
+  rockBtn.disabled = disabled;
+  paperBtn.disabled = disabled;
+  scissorsBtn.disabled = disabled;
+}
+
 let playerScore = 0;
 let computerScore = 0;
 
@@ -91,8 +97,3 @@ paperBtn.addEventListener("click", function () {
 scissorsBtn.addEventListener("click", function () {
   showResults("Scissors");
 });
-function disableOptions(disabled) {
-  rockBtn.disabled = disabled;
-  paperBtn.disabled = disabled;
-  scissorsBtn.disabled = disabled;
-}
