@@ -12,6 +12,9 @@ function hasPlayerWonTheRound(player, computer) {
     (player === "Paper" && computer === "Rock")
   );
 }
+const rockBtn = document.getElementById("rock-btn");
+const paperBtn = document.getElementById("paper-btn");
+const scissorsBtn = document.getElementById("scissors-btn");
 
 let playerScore = 0;
 let computerScore = 0;
@@ -76,11 +79,6 @@ function resetGame() {
   resetGameBtn.style.display = "none";
 };
 resetGameBtn.addEventListener("click", resetGame);
-
-
-const rockBtn = document.getElementById("rock-btn");
-const paperBtn = document.getElementById("paper-btn");
-const scissorsBtn = document.getElementById("scissors-btn");
 
 rockBtn.addEventListener("click", function () {
   showResults("Rock");
